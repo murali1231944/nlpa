@@ -1,0 +1,22 @@
+﻿# NLP-Powered Text-to-SQL Interface — dependencies
+# Install with: pip install -r requirements.txt
+# Then: python -m spacy download en_core_web_sm
+
+# Core NLP
+spacy>=3.7.0
+sentence-transformers>=2.7.0
+rapidfuzz>=3.6.0
+
+# LLM (Groq Python SDK)
+groq>=1.0.0
+
+# UI
+streamlit>=1.35.0
+
+# Data / utilities
+pandas>=2.0.0
+numpy>=1.26.0
+python-dotenv>=1.0.0
+
+# Testing
+pytest>=8.0.0

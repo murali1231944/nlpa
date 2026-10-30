@@ -1,0 +1,7 @@
+.env
+*.env
+__pycache__/
+*.py[cod]
+data/llm_cache.json
+data/example_embeddings.npy
+

@@ -1,0 +1,16 @@
+# Environment variables and API keys
+.env
+*.env
+text2sql/.env
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Local data cache
+text2sql/data/llm_cache.json
+text2sql/data/example_embeddings.npy
+

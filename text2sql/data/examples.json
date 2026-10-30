@@ -1,0 +1,356 @@
+[
+  {
+    "id": 1,
+    "question": "List all students in CSE branch",
+    "sql": "SELECT name FROM students WHERE branch = 'CSE';",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 2,
+    "question": "How many students are from Bengaluru?",
+    "sql": "SELECT COUNT(*) FROM students WHERE city = 'Bengaluru';",
+    "tags": [
+      "count",
+      "filter"
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Show the average CGPA of all students",
+    "sql": "SELECT AVG(cgpa) FROM students;",
+    "tags": [
+      "aggregate"
+    ]
+  },
+  {
+    "id": 4,
+    "question": "List students with CGPA above 8.5",
+    "sql": "SELECT name, cgpa FROM students WHERE cgpa > 8.5;",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 5,
+    "question": "How many courses are there?",
+    "sql": "SELECT COUNT(*) FROM courses;",
+    "tags": [
+      "count"
+    ]
+  },
+  {
+    "id": 6,
+    "question": "List all course names",
+    "sql": "SELECT course_name FROM courses;",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Show students from Mysuru",
+    "sql": "SELECT name FROM students WHERE city = 'Mysuru';",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 8,
+    "question": "What is the highest marks scored in any course?",
+    "sql": "SELECT MAX(marks) FROM marks;",
+    "tags": [
+      "aggregate"
+    ]
+  },
+  {
+    "id": 9,
+    "question": "What is the lowest attendance recorded?",
+    "sql": "SELECT MIN(attendance) FROM marks;",
+    "tags": [
+      "aggregate"
+    ]
+  },
+  {
+    "id": 10,
+    "question": "List the top 5 students by CGPA",
+    "sql": "SELECT name, cgpa FROM students ORDER BY cgpa DESC LIMIT 5;",
+    "tags": [
+      "order_limit"
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Show students whose attendance is below 60 in any course",
+    "sql": "SELECT DISTINCT s.name FROM students s JOIN marks m ON s.id = m.student_id WHERE m.attendance < 60;",
+    "tags": [
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 12,
+    "question": "What is the average marks in DBMS?",
+    "sql": "SELECT AVG(m.marks) FROM marks m JOIN courses c ON m.course_id = c.course_id WHERE c.course_name = 'DBMS';",
+    "tags": [
+      "aggregate",
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 13,
+    "question": "How many students are in ECE branch?",
+    "sql": "SELECT COUNT(*) FROM students WHERE branch = 'ECE';",
+    "tags": [
+      "count",
+      "filter"
+    ]
+  },
+  {
+    "id": 14,
+    "question": "List students who scored more than 90 marks in any subject",
+    "sql": "SELECT DISTINCT s.name FROM students s JOIN marks m ON s.id = m.student_id WHERE m.marks > 90;",
+    "tags": [
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Show the average attendance across all students",
+    "sql": "SELECT AVG(attendance) FROM marks;",
+    "tags": [
+      "aggregate"
+    ]
+  },
+  {
+    "id": 16,
+    "question": "Which branch has the most students?",
+    "sql": "SELECT branch, COUNT(*) AS total FROM students GROUP BY branch ORDER BY total DESC LIMIT 1;",
+    "tags": [
+      "count",
+      "group_by",
+      "order_limit"
+    ]
+  },
+  {
+    "id": 17,
+    "question": "List students from Mangaluru with CGPA above 7",
+    "sql": "SELECT name, cgpa FROM students WHERE city = 'Mangaluru' AND cgpa > 7;",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 18,
+    "question": "What is the total number of credits across all courses?",
+    "sql": "SELECT SUM(credits) FROM courses;",
+    "tags": [
+      "aggregate"
+    ]
+  },
+  {
+    "id": 19,
+    "question": "Show the name and marks of students who passed DBMS with more than 40 marks",
+    "sql": "SELECT s.name, m.marks FROM students s JOIN marks m ON s.id = m.student_id JOIN courses c ON m.course_id = c.course_id WHERE c.course_name = 'DBMS' AND m.marks > 40;",
+    "tags": [
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 20,
+    "question": "List courses with 4 credits",
+    "sql": "SELECT course_name FROM courses WHERE credits = 4;",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 21,
+    "question": "How many students have CGPA between 7 and 8?",
+    "sql": "SELECT COUNT(*) FROM students WHERE cgpa BETWEEN 7 AND 8;",
+    "tags": [
+      "count",
+      "filter"
+    ]
+  },
+  {
+    "id": 22,
+    "question": "List the top 3 students by marks in Algorithms",
+    "sql": "SELECT s.name, m.marks FROM students s JOIN marks m ON s.id = m.student_id JOIN courses c ON m.course_id = c.course_id WHERE c.course_name = 'Algorithms' ORDER BY m.marks DESC LIMIT 3;",
+    "tags": [
+      "filter",
+      "join",
+      "order_limit"
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What is the average CGPA of CSE students?",
+    "sql": "SELECT AVG(cgpa) FROM students WHERE branch = 'CSE';",
+    "tags": [
+      "aggregate",
+      "filter"
+    ]
+  },
+  {
+    "id": 24,
+    "question": "Show students who have attendance of at least 75 in all their courses",
+    "sql": "SELECT s.name FROM students s WHERE NOT EXISTS (SELECT 1 FROM marks m WHERE m.student_id = s.id AND m.attendance < 75);",
+    "tags": [
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 25,
+    "question": "List all students in semester 5",
+    "sql": "SELECT name FROM students WHERE semester = 5;",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 26,
+    "question": "What is the maximum CGPA among ISE students?",
+    "sql": "SELECT MAX(cgpa) FROM students WHERE branch = 'ISE';",
+    "tags": [
+      "aggregate",
+      "filter"
+    ]
+  },
+  {
+    "id": 27,
+    "question": "How many students scored less than 50 in Operating Systems?",
+    "sql": "SELECT COUNT(*) FROM marks m JOIN courses c ON m.course_id = c.course_id WHERE c.course_name = 'Operating Systems' AND m.marks < 50;",
+    "tags": [
+      "count",
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 28,
+    "question": "Show average marks per course",
+    "sql": "SELECT c.course_name, AVG(m.marks) AS avg_marks FROM courses c JOIN marks m ON c.course_id = m.course_id GROUP BY c.course_name;",
+    "tags": [
+      "aggregate",
+      "group_by",
+      "join"
+    ]
+  },
+  {
+    "id": 29,
+    "question": "List students whose name starts with A",
+    "sql": "SELECT name FROM students WHERE name LIKE 'A%';",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 30,
+    "question": "What is the average marks of ECE students in all subjects?",
+    "sql": "SELECT AVG(m.marks) FROM marks m JOIN students s ON m.student_id = s.id WHERE s.branch = 'ECE';",
+    "tags": [
+      "aggregate",
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 31,
+    "question": "List courses offered by the CSE department",
+    "sql": "SELECT course_name FROM courses WHERE branch = 'CSE';",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 32,
+    "question": "Which city has the highest number of students?",
+    "sql": "SELECT city, COUNT(*) AS total FROM students GROUP BY city ORDER BY total DESC LIMIT 1;",
+    "tags": [
+      "count",
+      "group_by",
+      "order_limit"
+    ]
+  },
+  {
+    "id": 33,
+    "question": "Show students with marks above 80 in NLP",
+    "sql": "SELECT s.name, m.marks FROM students s JOIN marks m ON s.id = m.student_id JOIN courses c ON m.course_id = c.course_id WHERE c.course_name = 'NLP' AND m.marks > 80;",
+    "tags": [
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 34,
+    "question": "How many students are enrolled in each semester?",
+    "sql": "SELECT semester, COUNT(*) AS total FROM students GROUP BY semester ORDER BY semester;",
+    "tags": [
+      "count",
+      "group_by",
+      "order_limit"
+    ]
+  },
+  {
+    "id": 35,
+    "question": "What is the minimum marks scored in Computer Networks?",
+    "sql": "SELECT MIN(m.marks) FROM marks m JOIN courses c ON m.course_id = c.course_id WHERE c.course_name = 'Computer Networks';",
+    "tags": [
+      "aggregate",
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 36,
+    "question": "List students who scored exactly 100 in any subject",
+    "sql": "SELECT DISTINCT s.name FROM students s JOIN marks m ON s.id = m.student_id WHERE m.marks = 100;",
+    "tags": [
+      "filter",
+      "join"
+    ]
+  },
+  {
+    "id": 37,
+    "question": "Show the average CGPA grouped by branch",
+    "sql": "SELECT branch, AVG(cgpa) AS avg_cgpa FROM students GROUP BY branch;",
+    "tags": [
+      "aggregate",
+      "group_by"
+    ]
+  },
+  {
+    "id": 38,
+    "question": "List students from Hubballi or Mysuru",
+    "sql": "SELECT name, city FROM students WHERE city IN ('Hubballi', 'Mysuru');",
+    "tags": [
+      "filter"
+    ]
+  },
+  {
+    "id": 39,
+    "question": "What is the total marks scored by each student across all courses?",
+    "sql": "SELECT s.name, SUM(m.marks) AS total_marks FROM students s JOIN marks m ON s.id = m.student_id GROUP BY s.id, s.name ORDER BY total_marks DESC;",
+    "tags": [
+      "aggregate",
+      "group_by",
+      "join",
+      "order_limit"
+    ]
+  },
+  {
+    "id": 40,
+    "question": "Show students with attendance above 90 in Cloud Computing",
+    "sql": "SELECT s.name, m.attendance FROM students s JOIN marks m ON s.id = m.student_id JOIN courses c ON m.course_id = c.course_id WHERE c.course_name = 'Cloud Computing' AND m.attendance > 90;",
+    "tags": [
+      "filter",
+      "join"
+    ]
+  }
+]
